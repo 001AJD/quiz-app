@@ -1,3 +1,7 @@
+/*
+ * router file to contain all the api endpoint needed for quiz application
+ */
+
 import express from "express";
 import * as controller from "../controllers/index.js";
 import {

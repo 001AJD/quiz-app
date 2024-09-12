@@ -11,6 +11,7 @@ app.use(helmet());
 // routers
 app.use("/quiz/v1", quizRouter);
 
+// application listen on port 3000
 app.listen(3000, () => {
 	console.log("listening on port 3000");
 });

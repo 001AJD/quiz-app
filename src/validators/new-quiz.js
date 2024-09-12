@@ -1,6 +1,7 @@
 import { body, validationResult } from "express-validator";
 
 const validateNewQuizPayload = (req, res, next) => {
+	// check if any error as per the validation rule, if yes then throw 400 bad request
 	const errors = validationResult(req);
 	if (!errors.isEmpty()) {
 		res.status(400).json({ errors: errors.array() }).end();
@@ -10,6 +11,7 @@ const validateNewQuizPayload = (req, res, next) => {
 };
 
 const newQuizValidationRules = () => {
+	// validation rules for new quiz route
 	return [
 		body("title").exists().isString(),
 		body("questions").custom((value) => {

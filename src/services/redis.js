@@ -2,10 +2,20 @@ import { createClient } from "redis";
 import dotenv from "dotenv";
 dotenv.config();
 
+// if required parameter are not present in the env file, the application
+// will throw an error untill all the required parameters are added
+const requiredParams = ["REDIS_HOST", "REDIS_PORT"];
+requiredParams.map((param) => {
+	if (process.env[param] === undefined) {
+		throw new Error(
+			`required redis parameter missing. app startup halted. add all the required env variables. ${requiredParams}`
+		);
+	}
+});
+
 class RedisClient {
 	constructor() {
 		this.client = null;
-		this.expirationTime = 20; // seconds
 	}
 
 	async connect() {

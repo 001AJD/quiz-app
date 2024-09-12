@@ -2,6 +2,7 @@ import { randomUUID } from "crypto";
 import * as models from "../models/quiz.js";
 
 export const createQuiz = async (req, res) => {
+	// controller to create a new quiz and save to database (in-memory)
 	const newQuiz = {
 		id: randomUUID(),
 		title: req.body.title,
@@ -12,8 +13,12 @@ export const createQuiz = async (req, res) => {
 			};
 		}),
 	};
-	const response = await models.saveNewQuiz(newQuiz);
-	res.json(response);
+	try {
+		const response = await models.saveNewQuiz(newQuiz);
+		res.json(response);
+	} catch (err) {
+		res.status(500).json({ msg: err.message });
+	}
 };
 
 export const getQuizById = async (req, res) => {
