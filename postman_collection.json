@@ -1,0 +1,147 @@
+{
+	"info": {
+		"_postman_id": "8edf5427-ae1a-48a1-9de2-8a4de8a2e96c",
+		"name": "quiz-app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2081908"
+	},
+	"item": [
+		{
+			"name": "create quiz",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\":\"Country Capital\",\n    \"questions\": [\n        {\n            \"text\":\"What is the capital of India?\",\n            \"options\":[\"Delhi\", \"Mumbai\",\"Pune\",\"Bengaluru\"],\n            \"correctOption\": 3\n        },\n        {\n            \"text\":\"What is the capital of United States?\",\n            \"options\":[\"Washington\", \"New York\",\"LA\",\"Boston\"],\n            \"correctOption\": 0\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/quiz/v1/create-quiz",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"quiz",
+						"v1",
+						"create-quiz"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get quiz by id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/quiz/v1/58a3bf5b-70b6-4e76-a4ee-8847b0686e2c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"quiz",
+						"v1",
+						"58a3bf5b-70b6-4e76-a4ee-8847b0686e2c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "submit answer",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "user-id",
+						"value": "9a296a50-0f94-419f-bbdd-39034883a598",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"selectedOption\": 0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/quiz/v1/5f5e1cc3-e0e1-4cbb-b546-210e7c8d6141/question/63c7240a-d0d3-4e6f-a689-68f788e3cf68",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"quiz",
+						"v1",
+						"5f5e1cc3-e0e1-4cbb-b546-210e7c8d6141",
+						"question",
+						"63c7240a-d0d3-4e6f-a689-68f788e3cf68"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get result",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/quiz/v1/58a3bf5b-70b6-4e76-a4ee-8847b0686e2c/user/9a296a50-0f94-419f-bbdd-39034883a598/result",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"quiz",
+						"v1",
+						"58a3bf5b-70b6-4e76-a4ee-8847b0686e2c",
+						"user",
+						"9a296a50-0f94-419f-bbdd-39034883a598",
+						"result"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

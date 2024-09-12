@@ -1,0 +1,4 @@
+- run docker-compose up
+- import postman collection
+- hit the API from postman
+- Note The nodejs API is exposed over port 3000 and redis is exposed over port 6379

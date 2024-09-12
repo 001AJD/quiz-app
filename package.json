@@ -9,7 +9,7 @@
 	},
 	"scripts": {
 		"start": "node ./src/app.js",
-		"test": "echo \"Error: no test specified\" && exit 1",
+		"tests": "mocha ./tests/**/*.js --exit",
 		"devStart": "nodemon ./src/app.js"
 	},
 	"repository": {
@@ -38,7 +38,9 @@
 	},
 	"devDependencies": {
 		"chai": "^5.1.1",
+		"chai-http": "^5.0.0",
 		"mocha": "^10.7.3",
-		"nodemon": "^3.1.4"
+		"nodemon": "^3.1.4",
+		"sinon": "^18.0.1"
 	}
 }
