@@ -1,0 +1,37 @@
+version: "3.8"
+
+services:
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "6379:6379" # Expose Redis on port 6379
+    volumes:
+      - redis-data:/data # Named volume to persist Redis data
+    networks:
+      - app-network
+
+  api:
+    build:
+      context: . # Assumes the Dockerfile is in the current directory
+      dockerfile: Dockerfile
+    container_name: quiz-api
+    ports:
+      - "3000:3000" # Expose the Node.js API on port 3000
+    environment:
+      - REDIS_HOST=redis # Redis hostname is the service name
+      - REDIS_PORT=6379
+    networks:
+      - app-network
+    depends_on:
+      - redis # Ensure Redis starts before the Node.js API
+    volumes:
+      - .:/usr/src/app # Bind mount for local development
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  redis-data:
+    driver: local
