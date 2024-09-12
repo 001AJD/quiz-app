@@ -72,14 +72,8 @@ export const updateUserResultObj = (quiz, answerPayload, user) => {
 };
 
 export const checkIfAlreadyAnswered = (user, quiz, questionId) => {
-	console.log("quiz*****");
-	console.log(quiz);
-	console.log(`quiz_${quiz.id}`);
-	console.log("*&&&&&^^^^^^#####");
-	console.log(user.hasOwnProperty(`quiz_${quiz.id}`));
 	// check if user has attempted any question from the quiz
 	if (!user.hasOwnProperty(`quiz_${quiz.id}`)) {
-		console.log("passed");
 		return false;
 	}
 	// check if user has answered the curent question
